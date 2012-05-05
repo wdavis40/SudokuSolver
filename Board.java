@@ -94,7 +94,7 @@ public class Board extends JFrame {
 	public JTextField solvedField;
 	public JLabel solvedLabel;
 	public Square solvedSquare;
-	public Boolean hasBoard = false;
+	public boolean hasBoard = false;
 	public Cell row;
 	public Cell col;
 	public ArrayList<Cell> compileListTemp1 = new ArrayList<Cell>();
@@ -182,7 +182,6 @@ public class Board extends JFrame {
 				 * showSolved(); } else { testSolved(); }
 				 */
 			}
-
 		});
 
 		clearButton.addActionListener(new ActionListener() {
@@ -209,7 +208,6 @@ public class Board extends JFrame {
 				}
 			}
 		});
-
 	}
 
 	protected void showSolvedOne() {
