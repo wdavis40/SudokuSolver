@@ -1,10 +1,10 @@
 public class SudokuSolver {
-	protected int[][] board = new int[9][9];
-	private boolean solved = false;
+  protected int[][] board = new int[9][9];
+  private boolean solved = false;
 
-	public SudokuSolver(int[][] inputBoard) {
+  public SudokuSolver(int[][] inputBoard) {
     board = inputBoard;
-	}
+  }
 
   /** 
    * Solve method that solves the sudoku board by calling the recursive
@@ -34,26 +34,26 @@ public class SudokuSolver {
    * @return whether the board could be solved or not
    */
 
-	private boolean solve(int i, int j, int[][] tempBoard) {
-		if (j == 9) {
-			j = 0;
-			if (++i == 9)
-				return true;
-		}
-		if (tempBoard[i][j] != 0)
-			return solve(i, j + 1, tempBoard);
+  private boolean solve(int i, int j, int[][] tempBoard) {
+    if (j == 9) {
+      j = 0;
+      if (++i == 9)
+        return true;
+    }
+    if (tempBoard[i][j] != 0)
+      return solve(i, j + 1, tempBoard);
     /* try each value in this spot */
-		for (int val = 1; val <= 9; val++) {
-			if (correct(i, j, val, tempBoard)) {
-				tempBoard[i][j] = val;
-				if (solve(i, j + 1, tempBoard))
-					return true;
-			}
-		}
-		tempBoard[i][j] = 0;
-		return false;
+    for (int val = 1; val <= 9; val++) {
+      if (correct(i, j, val, tempBoard)) {
+        tempBoard[i][j] = val;
+        if (solve(i, j + 1, tempBoard))
+          return true;
+      }
+    }
+    tempBoard[i][j] = 0;
+    return false;
 
-	}
+  }
 
   /**
    * Tests if the given value in the given spot is correct by checking
@@ -91,14 +91,14 @@ public class SudokuSolver {
 
   }
 
-	public int[][] getBoard() {
-		return board;
-	}
-	
-	public boolean getResult(){
-		return solved;
-	}
-	public void setResult(Boolean set){
-		solved = set;
-	}
+  public int[][] getBoard() {
+    return board;
+  }
+  
+  public boolean getResult(){
+    return solved;
+  }
+  public void setResult(Boolean set){
+    solved = set;
+  }
 }
