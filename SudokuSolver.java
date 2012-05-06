@@ -2,7 +2,8 @@ public class SudokuSolver {
 	protected int[][] board = new int[9][9];
 	private boolean solved = false;
 
-	public SudokuSolver() {
+	public SudokuSolver(int[][] inputBoard) {
+    board = inputBoard;
 	}
 
   /** 
@@ -24,17 +25,6 @@ public class SudokuSolver {
       board = tempBoard;
     return result;
   }
-
-  /*
-	public void solve(int[][] newBoard) {
-		board = newBoard;
-		solved = this.solve(0, 0, board);
-		if(solved)
-			return board;
-		else
-			return newBoard;
-	}
-  */
 
   /**
    * Recursive method that solves the board and fills in the board
@@ -71,7 +61,7 @@ public class SudokuSolver {
    *
    */
 
-  private boolean correct(int row, int col, int val, int[][] tempBoard){
+  public boolean correct(int row, int col, int val, int[][] tempBoard){
     /* check the rows and columns to see if the values are valid by
        sudoku rules */
     for(int i = 0; i < 9; i++){
@@ -101,36 +91,6 @@ public class SudokuSolver {
 
   }
 
-  /*
-	private boolean correct(int i, int j, int val, int[][] board2) {
-		for (int temp = 0; temp < 9; temp++) {
-			if (temp == i)
-				;
-			else if (board2[temp][j] == val)
-				return false;
-		}
-		for (int temp = 0; temp < 9; temp++) {
-			if (temp == j)
-				;
-			else if (board2[i][temp] == val)
-				return false;
-		}
-		int rowNum = (i / 3) * 3;
-		int colNum = (j / 3) * 3;
-		for (int temp = rowNum; temp < rowNum + 3; temp++) {
-			for (int temp2 = colNum; temp2 < colNum + 3; temp2++)
-				if (temp == i && temp2 == j)
-					;
-				else {
-					if (board2[temp][temp2] == val)
-						return false;
-				}
-
-		}
-		return true;
-	}
-  */
-	
 	public int[][] getBoard() {
 		return board;
 	}
