@@ -1,9 +1,36 @@
 public class SudokuSolver {
-  protected int[][] board = new int[9][9];
-  private boolean solved = false;
+  protected int[][] board;
 
   public SudokuSolver(int[][] inputBoard) {
     board = inputBoard;
+  }
+
+  public SudokuSolver(){
+    board = new int[9][9];
+  }
+
+
+  /**
+   * Set the board instance variable.
+   */
+
+  public void setBoard(int[][] inputBoard){
+    board = inputBoard;
+  }
+
+  /**
+   * Get the board instance variable
+   */
+
+  public int[][] getBoard(){
+    return board;
+  }
+
+  /**
+   * Clear the board, set every element to zero
+   */
+  public void clear(){
+    board = new int[9][9];
   }
 
   /** 
@@ -14,15 +41,13 @@ public class SudokuSolver {
    */
 
   public boolean solve(){
-    int[][] tempBoard = new int[9][9];
-    for(int i=0; i<board.length; i++){
-      for(int j=0; j<board[0].length; j++){
-        tempBoard[i][j] = board[i][j];
-      }
+    System.out.println("Inside solve");
+    if( checkForIllegalBoard() ){
+      return false;
     }
-    boolean result = solve(0,0,tempBoard);
-    if(result)
-      board = tempBoard;
+    System.out.println("After check, attempting to solve");
+    boolean result = solve(0,0,board);
+    System.out.println("After solve, about to return");
     return result;
   }
 
@@ -66,10 +91,10 @@ public class SudokuSolver {
        sudoku rules */
     for(int i = 0; i < 9; i++){
       // Check the column
-      if(i != col && tempBoard[i][col] == val)
+      if(i != row && tempBoard[i][col] == val)
         return false;
       // Check the row
-      if(i != row && tempBoard[row][i] == val)
+      if(i != col && tempBoard[row][i] == val)
         return false;
     }
 
@@ -86,19 +111,25 @@ public class SudokuSolver {
       }
     }
 
-    //return true if we find that the value isn't invalid
+    //return true if we find that the value is not invalid (yes, not invalid)
     return true;
 
   }
 
-  public int[][] getBoard() {
-    return board;
+  /**
+   * Checks the board to make sure that the current board is actually
+   * solvable. This check is performed before the recursive solve function
+   * is called.
+   */
+
+  public boolean checkForIllegalBoard(){
+    for(int i=0; i<board.length; i++){
+      for(int j=0; j<board[0].length; j++){
+        if( !correct(i,j,board[i][j], board) )
+          return true;
+      }
+    }
+    return false;
   }
-  
-  public boolean getResult(){
-    return solved;
-  }
-  public void setResult(Boolean set){
-    solved = set;
-  }
+
 }
