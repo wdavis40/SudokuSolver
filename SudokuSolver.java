@@ -125,7 +125,7 @@ public class SudokuSolver {
   public boolean checkForIllegalBoard(){
     for(int i=0; i<board.length; i++){
       for(int j=0; j<board[0].length; j++){
-        if( !correct(i,j,board[i][j], board) )
+        if(board[i][j] != 0 && !correct(i,j,board[i][j], board) )
           return true;
       }
     }
