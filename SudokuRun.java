@@ -1,6 +1,6 @@
 public class SudokuRun {
   public static void main(String[] args){
-    Board board = new Board();
-    board.setVisible(true);
+    SudokuFrame window = new SudokuFrame();
+    window.setVisible(true);
   }
 }
