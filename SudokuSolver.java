@@ -1,3 +1,7 @@
+/**
+ * Class used to solve a sudoku board.
+ */
+
 public class SudokuSolver {
   protected int[][] board;
 
@@ -41,13 +45,10 @@ public class SudokuSolver {
    */
 
   public boolean solve(){
-    System.out.println("Inside solve");
     if( checkForIllegalBoard() ){
       return false;
     }
-    System.out.println("After check, attempting to solve");
     boolean result = solve(0,0,board);
-    System.out.println("After solve, about to return");
     return result;
   }
 
