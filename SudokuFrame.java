@@ -1,3 +1,10 @@
+/**
+ * A Frame that holds both a SudokuBoard (holding all of the cells a.k.a.
+ * JTextAreas) and a SudokuSolver (which is where the solving occurs).
+ * This class facilitates the interaction between the SudokuBoard and 
+ * SudokuSolver.
+ */
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
@@ -62,13 +69,6 @@ public class SudokuFrame extends JFrame {
         } else {
           statusText.setText("Failure. The given sudoku board is unsolvable");
         }
-        for(int i=0; i<resultBoard.length; i++){
-          for(int j=0; j<resultBoard[0].length; j++){
-            System.out.print(resultBoard[i][j] + " ");
-          }
-          System.out.println();
-        }
-
 
       }
     });
@@ -85,7 +85,7 @@ public class SudokuFrame extends JFrame {
   }
 
   private void setupBoardPanel(){
+    
   }
-
 
 }
