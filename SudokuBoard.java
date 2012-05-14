@@ -1,3 +1,9 @@
+/**
+ * A JPanel that holds all of the Sudoku cells (each a JTextField).
+ * Contains methods for setting the cells and extracting information
+ * from the cells (such as the user input).
+ */
+
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
@@ -7,7 +13,6 @@ import java.awt.Font;
 public class SudokuBoard extends JPanel{
 
   private JTextField[][] board;
-  //private JTextField[][] board = JTextField[9][9];
 
   public SudokuBoard(){
     super(new GridLayout(9,9));
